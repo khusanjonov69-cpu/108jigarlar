@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071827"><meta name="description" content="Mau-Mau UZ — o'zbekcha onlayn karta o'yini">
+<title>Mau-Mau UZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <div class="ambient"></div>
+  <header class="topbar"><div class="brand"><span class="brand-mark">♠</span><div><b>MAU-MAU</b><small>UZ</small></div></div><div id="roomBadge" class="room-badge hidden"></div><div id="connection" class="connection">Ulanmoqda…</div></header>
+
+  <main>
+    <section id="lobby" class="screen active">
+      <div class="hero"><div class="ornament">✦ ✧ ✦</div><h1>O‘zingiz uchun<br><span>personaj tanlang</span></h1><p>6 ta o‘yinchi. Bitta stol. Oxirida kim qoladi?</p></div>
+      <div class="setup-grid">
+        <div class="glass-card character-card"><div class="card-title">Personajlar</div><div id="personas" class="personas"></div></div>
+        <div class="glass-card entry-card"><div class="card-title">O‘yinga kirish</div><label>Ismingiz<input id="nameInput" maxlength="18" placeholder="Masalan: Ahror"></label><div class="entry-actions"><button id="createBtn" class="gold-btn">XONA OCHISH</button><div class="or">yoki</div><div class="join-row"><input id="roomInput" maxlength="6" placeholder="XONA KODI"><button id="joinBtn" class="dark-btn">KIRISH</button></div></div><div id="lobbyHint" class="hint">Avval personaj tanlang.</div></div>
+      </div>
+    </section>
+
+    <section id="waiting" class="screen"><div class="section-head"><div><span class="eyebrow">XONA <b id="waitCode">------</b></span><h2>Stol atrofida joylashing</h2></div><button id="copyBtn" class="icon-btn">Kodni nusxalash</button></div><div class="waiting-table"><div class="table-rug"><div class="table-center"><div class="wait-emblem">♠</div><b>Hamma tayyormi?</b><span>Hamma BOSHLASH tugmasini bosgach o‘yin boshlanadi.</span></div><div id="waitPlayers" class="wait-players"></div></div></div><button id="readyBtn" class="gold-btn big-ready">BOSHLASH</button></section>
+
+    <section id="game" class="screen"><div class="game-shell"><div id="table" class="game-table"><div class="table-ornament o1">✦</div><div class="table-ornament o2">❖</div><div class="table-ornament o3">✦</div><div class="table-ornament o4">❖</div><div id="gamePlayers" class="game-players"></div><div class="center-pile"><div id="drawPile" class="deck-card" title="Tortish"></div><div id="topCard" class="top-card"></div><div id="suitChoice" class="suit-choice hidden"><div class="suit-choice-title">Mast tanlang</div><div id="suitButtons"></div></div><div id="turnText" class="turn-text"></div></div><div id="secretOrnament" class="secret-ornament" title=""></div></div><div class="bottom-zone"><div id="myHand" class="hand"></div><div class="controls"><button id="drawBtn" class="dark-btn">1 TA OLISH</button><div id="chatLines" class="chat-lines"></div><div id="chatEmoji" class="chat-emoji"></div></div></div></div></section>
+
+    <section id="finished" class="screen"><div class="finish-card glass-card"><div class="ornament">✦ ✧ ✦</div><h2>Raund yakunlandi</h2><div id="results"></div><button id="newRoundBtn" class="gold-btn">YANGI RAUND</button></div></section>
+  </main>
+</div>
+<div id="toast"></div><div id="secretViewer" class="secret-viewer hidden"><div class="secret-viewer-box"><div class="secret-viewer-head"><b id="secretViewerTitle">Maxfiy qo‘l</b><button id="secretViewerClose">×</button></div><div id="secretViewerCards" class="secret-viewer-cards"></div></div></div>
+<div id="secretModal" class="secret-modal hidden"><div class="secret-box"><b>Maxfiy rejim</b><p>Qurilma kodi kerak.</p><input id="secretInput" type="password"><button id="secretSubmit" class="gold-btn">TEKSHIRISH</button></div></div>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>

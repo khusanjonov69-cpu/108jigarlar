@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mau-mau-uz
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: SECRET_CODE
+        generateValue: true
+      - key: NODE_VERSION
+        value: 20
