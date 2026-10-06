@@ -1,29 +1,26 @@
-# Mau-Mau UZ 🎮
+# Mau-Mau UZ — Real 3D multiplayer
 
-O'zbekcha 2–6 kishilik real-time karta o'yini.
+Bu versiyada personajlar JPG/PNG emas. Render build vaqtida 6 ta haqiqiy rigged `.glb` model yuklanadi va `public/assets/characters/` ichiga joylanadi. Har bir GLB mesh + 22-bone skeleton + animation cliplar bilan keladi.
 
-## Render Free ga joylash
+## Ishga tushirish
 
-1. Shu loyihani GitHub repository sifatida yuklang.
-2. Render.com ga kiring va **New → Blueprint** ni tanlang.
-3. GitHub repositoryni tanlang.
-4. `render.yaml` avtomatik o'qiladi.
-5. **Apply** bosing.
-6. Render build qilib, `https://...onrender.com` manzilini beradi.
+Render → New Web Service → Docker:
+- Root Directory: `mau-mau-uz`
+- Dockerfile Path: `./Dockerfile`
+- Docker Build Context: `.`
+- Plan: Free
 
-Kodda `SECRET_CODE` ni qo'lda yozish shart emas: Render uni avtomatik yaratadi.
+Docker build vaqtida `scripts/download-assets.sh` 6 ta GLB ni olib keladi. Shuning uchun GitHub repo ichida katta binary fayllarni saqlash shart emas, lekin ishlayotgan Render container ichida modellar real fayl sifatida mavjud bo'ladi.
 
-## Lokal ishga tushirish
+## 3D asset manbasi
 
-```bash
-npm install
-npm start
-```
+`MMWilliams/char-kit` — 16 ta MakeHuman rigged character, har biri o'zining 22-bone rig va 66 animation cliplari bilan keladi. Ushbu loyiha 6 ta modeldan foydalanadi. Manba: https://github.com/MMWilliams/char-kit
 
-Keyin: `http://localhost:3000`
+MakeHuman/MPFB2 character meshes va bundled assets CC0 sifatida ko'rsatilgan; char-kit README motion capture litsenziyasini alohida tekshirish kerakligini aytadi. Ushbu buildni ommaga tarqatishdan oldin motion-source litsenziyasini qayta tekshiring.
 
 ## Muhim
 
-Free server uzoq vaqt hech kim foydalanmasa uxlaydi. Keyingi kirishda uyg'onadi. O'yin vaqtida server faol bo'ladi.
-
-O'yin holati serverda boshqariladi; oddiy klientga boshqa o'yinchilarning qo'l kartalari yuborilmaydi.
+- Server authoritative.
+- Oddiy client boshqa o'yinchilarning hand kartalarini olmaydi.
+- Secret mode faqat server tasdiqlagan socket holati orqali boshqa handni shu qurilmaga yuboradi.
+- 7 stack, 6 non-stack, 8 same-suit continuation, Q suit choice, A skip, draw-then-immediate-play qoidalari serverda bajariladi.

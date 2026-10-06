@@ -1,13 +1,9 @@
 services:
   - type: web
-    name: mau-mau-uz
-    runtime: node
+    name: one08jigarlar
+    env: docker
+    rootDir: .
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     plan: free
-    buildCommand: npm install
-    startCommand: npm start
     healthCheckPath: /health
-    envVars:
-      - key: SECRET_CODE
-        generateValue: true
-      - key: NODE_VERSION
-        value: 20
